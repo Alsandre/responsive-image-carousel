@@ -1,9 +1,13 @@
 import React from 'react';
 
+import Slider from './components/slider/Slider';
+import Options from './components/slider/Options';
+
 function App() {
   return (
     <div>
-      <h1>Responsive Image carousel</h1>
+      <Options />
+      <Slider />
     </div>
   );
 }

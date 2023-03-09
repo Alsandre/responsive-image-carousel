@@ -59,9 +59,9 @@ export const IMAGE_LIST: { imageURL: string; description: string }[] = [
 ];
 
 type ContextType = {
-  layoutVariant: string;
-  sliderDirection: string;
-  controls: string;
+  sliderVariant: string;
+  controlsVariant: {left: string; right: string};
+  control: string;
   imageCollection: { imageURL: string; description: string }[];
 };
 
@@ -72,9 +72,9 @@ interface SliderContextInterface {
 
 const defaultContext = {
   sliderState: {
-    layoutVariant: "default",
-    sliderDirection: "horizontal",
-    controls: "button",
+    sliderVariant: "default",
+    controlsVariant: {left: 'button-left-position2', right: 'button-right-position2'},
+    control: "button",
     imageCollection: IMAGE_LIST,
   },
   setSliderState: (context: ContextType) => {},
@@ -88,9 +88,9 @@ type ProviderType = {
 
 export default function SliderContextProvider({ children }: ProviderType) {
   const [sliderState, setSliderState] = useState<ContextType>({
-    layoutVariant: "",
-    sliderDirection: "",
-    controls: "",
+    sliderVariant: "",
+    controlsVariant: {left: 'button-left-position2', right: 'button-right-position2'},
+    control: "",
     imageCollection: [],
   });
 
@@ -100,3 +100,4 @@ export default function SliderContextProvider({ children }: ProviderType) {
     </SliderContext.Provider>
   );
 }
+

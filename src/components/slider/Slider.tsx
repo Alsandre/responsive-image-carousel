@@ -43,9 +43,9 @@ export default function Slider () : JSX.Element {
     };
 
     return <div className={classes['slider-parent']}>
-        <SlideLeft description='' image={IMAGE_LIST[state-1].imageURL} className={classes['left-child']} />
-        <ActiveSlide description='' image={IMAGE_LIST[state].imageURL} className={classes['active-child']} />
-        <SlideRight description='' image={IMAGE_LIST[state+1].imageURL} className={classes['right-child']} />
+        <SlideLeft description='' image={sliderState.imageCollection[state-1].imageURL} className={classes['left-child']} />
+        <ActiveSlide description='' image={sliderState.imageCollection[state].imageURL} className={classes['active-child']} />
+        <SlideRight description='' image={sliderState.imageCollection[state+1].imageURL} className={classes['right-child']} />
         <SliderButton direction='<' className={classes[sliderState.controlsVariant.left]} onClick={leftClickHandler} />
         <SliderButton direction='>' className={classes[sliderState.controlsVariant.right]} onClick={rightClickHandler} />
     </div>

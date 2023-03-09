@@ -91,7 +91,7 @@ export default function SliderContextProvider({ children }: ProviderType) {
     sliderVariant: "",
     controlsVariant: {left: 'button-left-position2', right: 'button-right-position2'},
     control: "",
-    imageCollection: [],
+    imageCollection: IMAGE_LIST,
   });
 
   return (

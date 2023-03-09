@@ -1,14 +1,16 @@
 import React from 'react';
 
+import SliderContextProvider from './context/slider-context';
+
 import Slider from './components/slider/Slider';
-import Options from './components/slider/Options';
+import OptionLayout from './layout/OptionLayout';
 
 function App() {
   return (
-    <div>
-      <Options />
+    <SliderContextProvider>
+      <OptionLayout />
       <Slider />
-    </div>
+    </SliderContextProvider>
   );
 }
 

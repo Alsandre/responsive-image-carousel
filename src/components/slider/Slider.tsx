@@ -15,17 +15,7 @@ import { IMAGE_LIST } from '../../constants';
 export default function Slider () : JSX.Element {
     const {sliderState} = useContext(SliderContext);
 
-    // let leftButtonClass: string = 'button-left-position2';
-    // let  rightButtonClass: string = 'button-right-position2';
 
-    // if(sliderState.controlsVariant === 'Lower lane') {
-    //     leftButtonClass = 'button-left-position2';
-    //     rightButtonClass = 'button-right-position2';
-    // }else if(sliderState.controlsVariant === 'Mid lane'){
-    //     leftButtonClass = 'button-left-position1';
-    //     rightButtonClass = 'button-right-position1';
-    // }
-    
     const [state, setState] = useState<number>(1);
     const rightClickHandler = () : void => {
         if(state === IMAGE_LIST.length-2){

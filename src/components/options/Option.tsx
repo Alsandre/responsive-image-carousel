@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext } from "react";
 
 import { SliderContext } from "../../context/slider-context";
 
@@ -10,9 +10,8 @@ type OptionType = {
 };
 
 export default function Option(props: OptionType): JSX.Element {
-  const { sliderState, setSliderState } = useContext(SliderContext);
+  const {setSliderState } = useContext(SliderContext);
 
-  const [controlsVariant, setControlsVariant] = useState<string>();
   function selectHandler(event: ChangeEvent<HTMLSelectElement>) {
     switch (event.target.name) {
       case "Control layout":

@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+
+import { SliderContext } from '../../context/slider-context';
 
 import SlideLeft from './SlideLeft';
 import ActiveSlide from './ActiveSlide';
 import SlideRight from './SlideRight';
 
-import classes from './Slider.module.css';
 import SliderButton from '../controls/SliderButton';
 
+import classes from './Slider.module.css';
 import { IMAGE_LIST } from '../../constants';
 
 
 export default function Slider () : JSX.Element {
+    const {sliderState} = useContext(SliderContext);
+
+    // let leftButtonClass: string = 'button-left-position2';
+    // let  rightButtonClass: string = 'button-right-position2';
+
+    // if(sliderState.controlsVariant === 'Lower lane') {
+    //     leftButtonClass = 'button-left-position2';
+    //     rightButtonClass = 'button-right-position2';
+    // }else if(sliderState.controlsVariant === 'Mid lane'){
+    //     leftButtonClass = 'button-left-position1';
+    //     rightButtonClass = 'button-right-position1';
+    // }
     
     const [state, setState] = useState<number>(1);
     const rightClickHandler = () : void => {
@@ -29,10 +43,10 @@ export default function Slider () : JSX.Element {
     };
 
     return <div className={classes['slider-parent']}>
-        <SlideLeft description='' image={IMAGE_LIST[state-1].imageURL} className={classes['left-child']} />
-        <ActiveSlide description='' image={IMAGE_LIST[state].imageURL} className={classes['active-child']} />
-        <SlideRight description='' image={IMAGE_LIST[state+1].imageURL} className={classes['right-child']} />
-        <SliderButton direction='<' className={classes['button-left-position2']} onClick={leftClickHandler} />
-        <SliderButton direction='>' className={classes['button-right-position2']} onClick={rightClickHandler} />
+        <SlideLeft description='' image={sliderState.imageCollection[state-1].imageURL} className={classes['left-child']} />
+        <ActiveSlide description='' image={sliderState.imageCollection[state].imageURL} className={classes['active-child']} />
+        <SlideRight description='' image={sliderState.imageCollection[state+1].imageURL} className={classes['right-child']} />
+        <SliderButton direction='<' className={classes[sliderState.controlsVariant.left]} onClick={leftClickHandler} />
+        <SliderButton direction='>' className={classes[sliderState.controlsVariant.right]} onClick={rightClickHandler} />
     </div>
 };

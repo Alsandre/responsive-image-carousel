@@ -1,7 +1,9 @@
 
 import Image from "./Image";
 
+import Animate from "../../layout/Animate";
 import classes from "./ActiveSlide.module.css";
+import { useEffect, useState } from "react";
 
 type TProps = {
     className: string;
@@ -9,10 +11,21 @@ type TProps = {
     description: string;
 }
 
-export default function ActiveSlide(props : TProps) : JSX.Element {
+export default function ActiveSlide({image, className, description} : TProps) : JSX.Element {
+  // const [animationState, setAnimationState] = useState('');
+  
+  // useEffect(() => {
+  //   setAnimationState(animate.slide)
+  //   const slideAnimateCleaner = setTimeout(() => {
+  //     setAnimationState('')
+  //   }, 500);
+  //   return () => {
+  //     clearTimeout(slideAnimateCleaner);
+  //   }
+  // }, [image])
   return (
-    <div className={classes["active-slide"] + " " + props.className}>
-      <Image image={props.image} alt={props.description} />
-    </div>
+    <Animate className={classes["active-slide"] + " " + className} variant='SLIDE' dependency={image}>
+      <Image image={image} alt={description} />
+    </Animate>
   );
 }

@@ -1,6 +1,8 @@
 
 import Image from './Image';
 
+import Animate from '../../layout/Animate';
+
 import classes from './SlideLeft.module.css';
 
 type TProps = {
@@ -9,8 +11,8 @@ type TProps = {
     description: string;
 }
 
-export default function SlideLeft (props : TProps) : JSX.Element {
-    return <div className={classes['slide-left'] + " " + props.className}>
-        <Image image={props.image} alt={props.description}/>
-    </div>
+export default function SlideLeft ({image, description, className} : TProps) : JSX.Element {
+    return <Animate className={classes['slide-left'] + " " + className} variant='SLIDE' dependency={image}>
+        <Image image={image} alt={description}/>
+    </Animate>
 }

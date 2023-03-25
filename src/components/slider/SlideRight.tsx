@@ -1,5 +1,7 @@
 import Image from "./Image";
 
+import Animate from "../../layout/Animate";
+
 import classes from "./SlideRight.module.css";
 
 type TProps = {
@@ -8,10 +10,10 @@ type TProps = {
     description: string;
 }
 
-export default function SlideRight(props: TProps ) : JSX.Element {
+export default function SlideRight({image, description, className}: TProps ) : JSX.Element {
   return (
-    <div className={classes["slide-right"] + " " + props.className}>
-      <Image image={props.image} alt={props.description} />
-    </div>
+    <Animate className={classes["slide-right"] + " " + className} variant='SLIDE' dependency={image}>
+      <Image image={image} alt={description} />
+    </Animate>
   );
 }

@@ -9,4 +9,4 @@ export interface ICarousel {
     showControls?: boolean;
     centerControls?: boolean;
   }
-  
+ 

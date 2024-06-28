@@ -17,6 +17,10 @@
     "rimraf": "^5.0.7",
     "typescript": "^4.4.2"
   },
+  "repository": "https://github.com/Alsandre/responsive-image-carousel.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "author": "Alsandre",
   "license": "MIT"
 }

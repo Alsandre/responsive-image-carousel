@@ -1,5 +1,5 @@
 import React, { Children, useState } from "react";
-import { ICarousel } from "../types";
+import { ICarousel } from "../index";
 import classes from "./Carousel.module.css";
 
 function Carousel({ children }: ICarousel): JSX.Element {

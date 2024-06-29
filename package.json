@@ -1,6 +1,6 @@
 {
   "name": "@alsandre/responsive-image-carousel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -18,9 +18,6 @@
     "typescript": "^4.4.2"
   },
   "repository": "https://github.com/Alsandre/responsive-image-carousel.git",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "author": "Alsandre",
   "license": "MIT"
 }

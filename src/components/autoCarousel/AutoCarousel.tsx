@@ -72,7 +72,6 @@ function AutoCarousel({
         ? imageList.map((item, index) => {
             switch (index) {
               case leftIndex: //left
-                console.log(index, "left");
                 return (
                   <div
                     key={key + index}
@@ -88,7 +87,6 @@ function AutoCarousel({
                   </div>
                 );
               case midIndex: //center
-                console.log(index, "mid");
                 return (
                   <div
                     key={key + index}
@@ -104,7 +102,6 @@ function AutoCarousel({
                   </div>
                 );
               case rightIndex: //right
-                console.log(index, "right");
                 return (
                   <div
                     key={key + index}

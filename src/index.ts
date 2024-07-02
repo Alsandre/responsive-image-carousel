@@ -15,6 +15,6 @@ export interface ICarousel {
   imageList?: ImageSrc[];
   className?: string;
   leftChildClass?: string;
-  activeChildClass?: string;
+  midChildClass?: string;
   rightChildClass?: string;
 }

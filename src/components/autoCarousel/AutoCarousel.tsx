@@ -6,66 +6,113 @@ function AutoCarousel({
   children,
   className,
   leftChildClass,
-  activeChildClass,
+  midChildClass,
   imageList,
   rightChildClass,
 }: ICarousel): JSX.Element {
-  const [slideIndex, setSlideIndex] = useState(1);
+  const [leftIndex, setLeftIndex] = useState(0);
+  const [midIndex, setMidIndex] = useState(1);
+  const [rightIndex, setRightIndex] = useState(2);
 
   const _listLength = imageList ? imageList.length : Children.count(children);
   useEffect(() => {
     let interval = setInterval(() => {
-      setSlideIndex((prevIndex) => (prevIndex + 1) % _listLength);
-    }, 1000);
+      setLeftIndex((prevIndex) => (prevIndex + 1) % _listLength);
+      setMidIndex((prevIndex) => (prevIndex + 1) % _listLength);
+      setRightIndex((prevIndex) => (prevIndex + 1) % _listLength);
+    }, 3000);
     return () => clearInterval(interval);
   }, [_listLength]);
+  let key = "";
   if (!children && !imageList)
     throw new Error(
       "Setup is not complete. Either children or imageList are missing."
     );
   return (
-    <div className={`${styles["slider-parent"]} ${className ?? ""}`}>
+    <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>
       {children && !imageList
         ? Children.map(children, (item, index) => {
             switch (index) {
-              case slideIndex - 1: //left
-                return <div className={leftChildClass ?? ""}>{item}</div>;
-              case slideIndex: //center
-                return <div className={activeChildClass ?? ""}>{item}</div>;
-              case slideIndex + 1: //right
-                return <div className={rightChildClass ?? ""}>{item}</div>;
+              case leftIndex: //left
+                return (
+                  <div
+                    key={key + index}
+                    className={`${styles["_ARIC-left-child"]} ${
+                      leftChildClass ?? ""
+                    }`}
+                  >
+                    {item}
+                  </div>
+                );
+              case midIndex: //center
+                return (
+                  <div
+                    key={key + index}
+                    className={`${styles["_ARIC-mid-child"]} ${
+                      midChildClass ?? ""
+                    }`}
+                  >
+                    {item}
+                  </div>
+                );
+              case rightIndex: //right
+                return (
+                  <div
+                    key={key + index}
+                    className={`${styles["_ARIC-right-child"]} ${
+                      rightChildClass ?? ""
+                    }`}
+                  >
+                    {item}
+                  </div>
+                );
             }
           })
         : !children && imageList
         ? imageList.map((item, index) => {
             switch (index) {
-              case slideIndex - 1: //left
+              case leftIndex: //left
+                console.log(index, "left");
                 return (
-                  <div className={leftChildClass ?? ""}>
+                  <div
+                    key={key + index}
+                    className={`${styles["_ARIC-left-child"]} ${
+                      leftChildClass ?? ""
+                    }`}
+                  >
                     <img
-                      key={index}
                       style={{ width: "100%", height: "100%" }}
                       src={item.imageURL}
                       alt=""
                     />
                   </div>
                 );
-              case slideIndex: //center
+              case midIndex: //center
+                console.log(index, "mid");
                 return (
-                  <div className={activeChildClass ?? ""}>
+                  <div
+                    key={key + index}
+                    className={`${styles["_ARIC-mid-child"]} ${
+                      midChildClass ?? ""
+                    }`}
+                  >
                     <img
-                      key={index}
                       style={{ width: "100%", height: "100%" }}
                       src={item.imageURL}
                       alt=""
                     />
                   </div>
                 );
-              case slideIndex + 1: //right
+              case rightIndex: //right
+                console.log(index, "right");
                 return (
-                  <div className={rightChildClass ?? ""}>
+                  <div
+                    key={key + index}
+                    className={`${styles["_ARIC-right-child"]} ${
+                      rightChildClass ?? ""
+                    }`}
+                  >
                     <img
-                      key={index}
                       style={{ width: "100%", height: "100%" }}
                       src={item.imageURL}
                       alt=""

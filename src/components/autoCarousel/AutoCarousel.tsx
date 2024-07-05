@@ -1,4 +1,4 @@
-import React, { Children, act, useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import { ICarousel } from "../../index";
 import styles from "./styles.module.css";
 

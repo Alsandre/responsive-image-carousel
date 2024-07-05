@@ -1,6 +1,6 @@
 # Responsive Image Carousel
 
-A responsive image carousel components for React applications. Here are two components responsible for manual and automatic switch between provided list of images. Carousel layout is built using flex and use minimal styling, everything can be overwritten by leveraging `classname` prop from the component, furthermore each child can be styled by passing class name for the corresponding child to the component as a prop there are `leftChildClass`, `midChildClass` and `rightChildClass`. 
+A responsive image carousel components for React applications. Here are two components responsible for manual and automatic switch between provided list of images. Carousel layout is built using flex and use minimal styling, everything can be overwritten by leveraging `classname` prop from the component, furthermore each child can be styled by passing class name for the corresponding child to the component as a prop there are `leftChildClass`, `midChildClass` and `rightChildClass`. Styling all children same way is even easier there is `allChildClass` that will be applied to each child. 
 
 ## Installation
 

@@ -14,6 +14,7 @@ export interface ICarousel {
   children?: React.ReactNode;
   imageList?: ImageSrc[];
   className?: string;
+  allChildClass?: string;
   leftChildClass?: string;
   midChildClass?: string;
   rightChildClass?: string;

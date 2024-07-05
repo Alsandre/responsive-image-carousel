@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 function AutoCarousel({
   children,
   className,
+  allChildClass,
   leftChildClass,
   midChildClass,
   imageList,
@@ -39,7 +40,7 @@ function AutoCarousel({
                     key={key + index}
                     className={`${styles["_ARIC-left-child"]} ${
                       leftChildClass ?? ""
-                    }`}
+                    } ${allChildClass ?? ""}`}
                   >
                     {item}
                   </div>
@@ -50,7 +51,7 @@ function AutoCarousel({
                     key={key + index}
                     className={`${styles["_ARIC-mid-child"]} ${
                       midChildClass ?? ""
-                    }`}
+                    } ${allChildClass ?? ""}`}
                   >
                     {item}
                   </div>
@@ -61,7 +62,7 @@ function AutoCarousel({
                     key={key + index}
                     className={`${styles["_ARIC-right-child"]} ${
                       rightChildClass ?? ""
-                    }`}
+                    } ${allChildClass ?? ""}`}
                   >
                     {item}
                   </div>
@@ -77,7 +78,7 @@ function AutoCarousel({
                     key={key + index}
                     className={`${styles["_ARIC-left-child"]} ${
                       leftChildClass ?? ""
-                    }`}
+                    }  ${allChildClass ?? ""}`}
                   >
                     <img
                       style={{ width: "100%", height: "100%" }}
@@ -92,7 +93,7 @@ function AutoCarousel({
                     key={key + index}
                     className={`${styles["_ARIC-mid-child"]} ${
                       midChildClass ?? ""
-                    }`}
+                    } ${allChildClass ?? ""}`}
                   >
                     <img
                       style={{ width: "100%", height: "100%" }}
@@ -107,7 +108,7 @@ function AutoCarousel({
                     key={key + index}
                     className={`${styles["_ARIC-right-child"]} ${
                       rightChildClass ?? ""
-                    }`}
+                    } ${allChildClass ?? ""}`}
                   >
                     <img
                       style={{ width: "100%", height: "100%" }}

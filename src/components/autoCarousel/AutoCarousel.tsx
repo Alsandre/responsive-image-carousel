@@ -10,6 +10,7 @@ function AutoCarousel({
   midChildClass,
   imageList,
   rightChildClass,
+  allImageClass,
 }: ICarousel): JSX.Element {
   const [leftIndex, setLeftIndex] = useState(0);
   const [midIndex, setMidIndex] = useState(1);
@@ -81,6 +82,7 @@ function AutoCarousel({
                     }  ${allChildClass ?? ""}`}
                   >
                     <img
+                      className={allImageClass ?? ""}
                       style={{ width: "100%", height: "100%" }}
                       src={item.imageURL}
                       alt=""
@@ -96,6 +98,7 @@ function AutoCarousel({
                     } ${allChildClass ?? ""}`}
                   >
                     <img
+                      className={allImageClass ?? ""}
                       style={{ width: "100%", height: "100%" }}
                       src={item.imageURL}
                       alt=""
@@ -111,6 +114,7 @@ function AutoCarousel({
                     } ${allChildClass ?? ""}`}
                   >
                     <img
+                      className={allImageClass ?? ""}
                       style={{ width: "100%", height: "100%" }}
                       src={item.imageURL}
                       alt=""

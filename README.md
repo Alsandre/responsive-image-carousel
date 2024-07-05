@@ -22,6 +22,8 @@ const IMAGE_LIST = [
   { imageURL: "https://picsum.photos/800/400?random=3" },
   { imageURL: "https://picsum.photos/800/400?random=4" },
   { imageURL: "https://picsum.photos/800/400?random=5" },
+  { imageURL: "https://picsum.photos/800/400?random=6" },
+  { imageURL: "https://picsum.photos/800/400?random=7" },
 ];
 
 function App() {

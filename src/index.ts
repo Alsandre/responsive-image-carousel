@@ -19,5 +19,5 @@ export interface ICarousel {
   leftChildClass?: string;
   midChildClass?: string;
   rightChildClass?: string;
-  showSingleSlide: boolean;
+  showSingleSlide?: boolean;
 }

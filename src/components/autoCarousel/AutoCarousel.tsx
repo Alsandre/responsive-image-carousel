@@ -11,6 +11,7 @@ function AutoCarousel({
   imageList,
   rightChildClass,
   allImageClass,
+  showSingleSlide = false,
 }: ICarousel): JSX.Element {
   const [leftIndex, setLeftIndex] = useState(0);
   const [midIndex, setMidIndex] = useState(1);
@@ -29,6 +30,43 @@ function AutoCarousel({
   if (!children && !imageList)
     throw new Error(
       "Setup is not complete. Either children or imageList are missing."
+    );
+  if (showSingleSlide)
+    return (
+      <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>
+        {children && !imageList
+          ? Children.map(children, (item) => {
+              return (
+                <div
+                  key={key + item}
+                  className={`${styles["_ARIC-mid-child"]} ${
+                    midChildClass ?? ""
+                  } ${allChildClass ?? ""}`}
+                >
+                  {item}
+                </div>
+              );
+            })
+          : !children && imageList
+          ? imageList.map((item, index) => {
+              return (
+                <div
+                  key={key + index}
+                  className={`${styles["_ARIC-mid-child"]} ${
+                    midChildClass ?? ""
+                  } ${allChildClass ?? ""}`}
+                >
+                  <img
+                    className={allImageClass ?? ""}
+                    style={{ width: "100%", height: "100%" }}
+                    src={item.imageURL}
+                    alt=""
+                  />
+                </div>
+              );
+            })
+          : ""}
+      </div>
     );
   return (
     <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>

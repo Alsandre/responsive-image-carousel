@@ -34,38 +34,30 @@ function AutoCarousel({
   if (showSingleSlide)
     return (
       <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>
-        {children && !imageList
-          ? Children.map(children, (item) => {
-              return (
-                <div
-                  key={key + item}
-                  className={`${styles["_ARIC-mid-child"]} ${
-                    midChildClass ?? ""
-                  } ${allChildClass ?? ""}`}
-                >
-                  {item}
-                </div>
-              );
-            })
-          : !children && imageList
-          ? imageList.map((item, index) => {
-              return (
-                <div
-                  key={key + index}
-                  className={`${styles["_ARIC-mid-child"]} ${
-                    midChildClass ?? ""
-                  } ${allChildClass ?? ""}`}
-                >
-                  <img
-                    className={allImageClass ?? ""}
-                    style={{ width: "100%", height: "100%" }}
-                    src={item.imageURL}
-                    alt=""
-                  />
-                </div>
-              );
-            })
-          : ""}
+        {children && !imageList ? (
+          <div
+            className={`${styles["_ARIC-mid-child"]} ${midChildClass ?? ""} ${
+              allChildClass ?? ""
+            }`}
+          >
+            {Children.toArray(children)[leftIndex]}
+          </div>
+        ) : !children && imageList ? (
+          <div
+            className={`${styles["_ARIC-mid-child"]} ${midChildClass ?? ""} ${
+              allChildClass ?? ""
+            }`}
+          >
+            <img
+              className={allImageClass ?? ""}
+              style={{ width: "100%", height: "100%" }}
+              src={imageList[leftIndex]["imageURL"]}
+              alt=""
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   return (

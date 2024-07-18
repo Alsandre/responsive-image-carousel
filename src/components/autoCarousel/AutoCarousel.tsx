@@ -8,7 +8,7 @@ function AutoCarousel({
   allChildClass,
   leftChildClass,
   midChildClass,
-  imageList,
+  imageList = [],
   rightChildClass,
   allImageClass,
   showSingleSlide = false,
@@ -31,7 +31,7 @@ function AutoCarousel({
     throw new Error(
       "Setup is not complete. Either children or imageList are missing."
     );
-  if (showSingleSlide)
+  if (showSingleSlide) {
     return (
       <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>
         {children && !imageList ? (
@@ -48,18 +48,24 @@ function AutoCarousel({
               allChildClass ?? ""
             }`}
           >
-            <img
-              className={allImageClass ?? ""}
-              style={{ width: "100%", height: "100%" }}
-              src={imageList[leftIndex]["imageURL"]}
-              alt=""
-            />
+            {imageList.length > 0 ? (
+              <img
+                className={allImageClass ?? ""}
+                style={{ width: "100%", height: "100%" }}
+                src={imageList[leftIndex]["imageURL"]}
+                alt=""
+              />
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           ""
         )}
       </div>
     );
+  }
+
   return (
     <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>
       {children && !imageList
@@ -100,7 +106,7 @@ function AutoCarousel({
                 );
             }
           })
-        : !children && imageList
+        : !children
         ? imageList.map((item, index) => {
             switch (index) {
               case leftIndex: //left

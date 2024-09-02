@@ -1,5 +1,5 @@
-import React, { Children, useEffect, useState } from "react";
-import { ICarousel } from "../../index";
+import React, { Children, ReactNode, useEffect, useState } from "react";
+import { ICarousel, RenderSingleSlide } from "../../index";
 import styles from "./styles.module.css";
 
 function AutoCarousel({
@@ -10,14 +10,22 @@ function AutoCarousel({
   midChildClass,
   imageList = [],
   rightChildClass,
-  allImageClass,
+  imageClass,
   showSingleSlide = false,
 }: ICarousel): JSX.Element {
   const [leftIndex, setLeftIndex] = useState(0);
   const [midIndex, setMidIndex] = useState(1);
   const [rightIndex, setRightIndex] = useState(2);
+  const imageNodes =
+    imageList.length !== 0 ? imageList.map(({imageURL}) => <img
+    className={imageClass ?? ""}
+    style={{ width: "100%", height: "100%" }}
+    src={imageURL}
+    alt=""
+  />) as ReactNode[] : Children.toArray(children);
 
-  const _listLength = imageList ? imageList.length : Children.count(children);
+  const _listLength =
+    imageList.length !== 0 ? imageList.length : Children.count(children);
   useEffect(() => {
     let interval = setInterval(() => {
       setLeftIndex((prevIndex) => (prevIndex + 1) % _listLength);
@@ -33,36 +41,9 @@ function AutoCarousel({
     );
   if (showSingleSlide) {
     return (
-      <div className={`${styles["_ARIC-wrapper"]} ${className ?? ""}`}>
-        {children && !imageList ? (
-          <div
-            className={`${styles["_ARIC-mid-child"]} ${midChildClass ?? ""} ${
-              allChildClass ?? ""
-            }`}
-          >
-            {Children.toArray(children)[leftIndex]}
-          </div>
-        ) : !children && imageList ? (
-          <div
-            className={`${styles["_ARIC-mid-child"]} ${midChildClass ?? ""} ${
-              allChildClass ?? ""
-            }`}
-          >
-            {imageList.length > 0 ? (
-              <img
-                className={allImageClass ?? ""}
-                style={{ width: "100%", height: "100%" }}
-                src={imageList[leftIndex]["imageURL"]}
-                alt=""
-              />
-            ) : (
-              ""
-            )}
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
+      <>
+        <RenderSingleSlide index={leftIndex} imageList={imageNodes} />
+      </>
     );
   }
 

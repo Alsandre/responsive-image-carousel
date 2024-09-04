@@ -21,4 +21,5 @@ export interface ICarousel {
   midChildClass?: string;
   rightChildClass?: string;
   showSingleSlide?: boolean;
+  slidesPerScreen?: number;
 }

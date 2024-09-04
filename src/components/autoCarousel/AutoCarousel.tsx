@@ -1,5 +1,5 @@
 import React, { Children, ReactNode, useEffect, useState } from "react";
-import { ICarousel, RenderSingleSlide } from "../../index";
+import { ICarousel } from "../../index";
 import styles from "./styles.module.css";
 
 function AutoCarousel({
@@ -12,7 +12,6 @@ function AutoCarousel({
   rightChildClass,
   slidesPerScreen = 3,
   imageClass,
-  showSingleSlide = false,
 }: ICarousel): JSX.Element {
   const [index, setIndex] = useState(0);
   const imageNodes =
@@ -39,23 +38,11 @@ function AutoCarousel({
     }, 3000);
     return () => clearInterval(interval);
   }, [_listLength]);
-  let key = "";
+
   if (!children && !imageList)
     throw new Error(
       "Setup is not complete. Either children or imageList are missing."
     );
-  // if (showSingleSlide) {
-  //   console.log(imageNodes);
-  //   return (
-  //     <>
-  //       <RenderSingleSlide index={index} imageList={imageNodes} />
-  //     </>
-  //   );
-  // }
-
-  const screen = Array(slidesPerScreen).fill(0);
-
-  // return <>{screen.map(imageNodes.map())}</>
 
   return <>{imageNodes.slice(index, index + slidesPerScreen)}</>;
 }

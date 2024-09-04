@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 export { Carousel } from "./components/Carousel";
 export { AutoCarousel } from "./components/autoCarousel/";
 export { ManualCarousel } from "./components/manualCarousel/";
-export { RenderSingleSlide } from "./components/RenderSingleSlide/RenderSingleSlide";
 
 export type TCarouselStyles = {
   [key: string]: string;
@@ -20,6 +19,5 @@ export interface ICarousel {
   leftChildClass?: string;
   midChildClass?: string;
   rightChildClass?: string;
-  showSingleSlide?: boolean;
   slidesPerScreen?: number;
 }

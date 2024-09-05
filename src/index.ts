@@ -11,13 +11,11 @@ export type ImageSrc = { imageURL: string };
 
 export interface ICarousel {
   style?: TCarouselStyles;
-  children?: React.ReactNode;
+  children?: ReactNode;
   imageList?: ImageSrc[];
   className?: string;
-  allChildClass?: string;
+  slideAnimation?: string;
+  sliderSpeed?: number;
   imageClass?: string;
-  leftChildClass?: string;
-  midChildClass?: string;
-  rightChildClass?: string;
   slidesPerScreen?: number;
 }

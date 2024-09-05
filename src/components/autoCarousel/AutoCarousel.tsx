@@ -1,17 +1,23 @@
-import React, { Children, ReactNode, useEffect, useState } from "react";
+import React, {
+  Children,
+  cloneElement,
+  isValidElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { ICarousel } from "../../index";
-import styles from "./styles.module.css";
+import classes from "./styles.module.css";
 
 function AutoCarousel({
   children,
   className,
-  allChildClass,
-  leftChildClass,
-  midChildClass,
+  slideAnimation,
+  sliderSpeed = 3000,
   imageList = [],
-  rightChildClass,
   slidesPerScreen = 3,
   imageClass,
+  style,
 }: ICarousel): JSX.Element {
   const [index, setIndex] = useState(0);
   const imageNodes =
@@ -24,7 +30,11 @@ function AutoCarousel({
             alt=""
           />
         )) as ReactNode[])
-      : Children.toArray(children);
+      : Children.map(children, (child) => (
+          <div className={`${classes.animate} ${slideAnimation ?? ""}`}>
+            {child}
+          </div>
+        )) || [];
 
   const _listLength =
     imageList.length !== 0 ? imageList.length : Children.count(children);
@@ -35,8 +45,10 @@ function AutoCarousel({
           ? 0
           : (prevIndex + 1) % _listLength
       );
-    }, 3000);
-    return () => clearInterval(interval);
+    }, sliderSpeed);
+    return () => {
+      clearInterval(interval);
+    };
   }, [_listLength]);
 
   if (!children && !imageList)
@@ -44,7 +56,14 @@ function AutoCarousel({
       "Setup is not complete. Either children or imageList are missing."
     );
 
-  return <>{imageNodes.slice(index, index + slidesPerScreen)}</>;
+  return (
+    <div
+      className={`${classes["_ARIC-wrapper"]} ${className ? className : ""}`}
+      style={style}
+    >
+      {imageNodes.slice(index, index + slidesPerScreen)}
+    </div>
+  );
 }
 
 export { AutoCarousel };

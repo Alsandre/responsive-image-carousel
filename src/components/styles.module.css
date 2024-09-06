@@ -4,7 +4,7 @@
   height: 100px;
   margin: 20px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   transition: all;
 }
@@ -21,12 +21,14 @@
 }
 
 .btn-left {
+  all: unset;
   position: absolute;
   top: 45%;
   left: 5px;
 }
 
 .btn-right {
+  all: unset;
   position: absolute;
   top: 45%;
   right: 5px;

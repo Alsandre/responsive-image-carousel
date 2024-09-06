@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 
 export { Carousel } from "./components/Carousel";
-export { AutoCarousel } from "./components/autoCarousel/";
-export { ManualCarousel } from "./components/manualCarousel/";
 
 export type TCarouselStyles = {
   [key: string]: string;
@@ -10,6 +8,7 @@ export type TCarouselStyles = {
 export type ImageSrc = { imageURL: string };
 
 export interface ICarousel {
+  controls?: boolean;
   style?: TCarouselStyles;
   children?: ReactNode;
   imageList?: ImageSrc[];
@@ -18,4 +17,6 @@ export interface ICarousel {
   sliderSpeed?: number;
   imageClass?: string;
   slidesPerScreen?: number;
+  buttonIcon?: ReactNode;
+  btnClassName?: string
 }

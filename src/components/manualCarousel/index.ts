@@ -1,1 +1,0 @@
-export { ManualCarousel } from "./ManualCarousel";

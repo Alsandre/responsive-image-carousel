@@ -1,0 +1,8 @@
+if git diff --cached --quiet --exit-code src/; then
+  echo "No changes in the 'src/' directory. Skipping pre-commit tasks."
+  exit 0
+else
+  echo "Changes detected in the 'src/' directory. Running pre-commit tasks..."
+  # Replace the following with your actual command, e.g., linting or testing
+  yarn version --patch
+fi

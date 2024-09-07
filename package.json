@@ -4,11 +4,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist",
-    "publish:package": "yarn bump && yarn build:package && yarn check:login && yarn register:package || echo 'Please log in to npm...'",
-    "bump": "yarn version --patch",
-    "check:login": "yarn npm whoami || (echo 'Not logged in to npm. Please log in.' && exit 1)",
-    "register:package": "npm publish"
+    "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

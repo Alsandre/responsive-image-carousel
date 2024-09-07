@@ -4,7 +4,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "publish": "yarn bump && yarn build:package && yarn check-login && npm publish || echo 'Please log in to npm...'"
+    "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist",
+    "publish": "yarn bump && yarn build:package && yarn check-login && npm publish || echo 'Please log in to npm...'",
+    "bump": "yarn version --patch",
+    "check-login": "npm whoami > /dev/null 2>&1"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

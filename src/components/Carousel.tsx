@@ -15,6 +15,7 @@ function Carousel({
   controls,
   buttonIcon = null,
   btnClassName,
+  auto = true,
 }: ICarousel): JSX.Element {
   const [index, setIndex] = useState(0);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
@@ -38,7 +39,7 @@ function Carousel({
     imageList.length !== 0 ? imageList.length : Children.count(children);
   useEffect(() => {
     let interval: number;
-    if (!isCarouselHovered) {
+    if (!isCarouselHovered && auto) {
       interval = setInterval(() => {
         setIndex((prevIndex) =>
           prevIndex + slidesPerScreen >= _listLength
@@ -50,13 +51,11 @@ function Carousel({
     return () => {
       clearInterval(interval);
     };
-  }, [_listLength, isCarouselHovered, sliderSpeed, slidesPerScreen]);
+  }, [_listLength, isCarouselHovered, sliderSpeed, slidesPerScreen, auto]);
 
   const handleLeft = () =>
     setIndex((prevIndex) =>
-      prevIndex - 1 < 0
-        ? _listLength - slidesPerScreen
-        : prevIndex - 1
+      prevIndex - 1 < 0 ? _listLength - slidesPerScreen : prevIndex - 1
     );
 
   const handleRight = () =>

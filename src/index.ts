@@ -18,5 +18,6 @@ export interface ICarousel {
   imageClass?: string;
   slidesPerScreen?: number;
   buttonIcon?: ReactNode;
-  btnClassName?: string
+  btnClassName?: string;
+  auto?: boolean;
 }

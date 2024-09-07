@@ -7,7 +7,7 @@
     "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist",
     "publish:package": "yarn bump && yarn build:package && yarn check:login && yarn register:package || echo 'Please log in to npm...'",
     "bump": "yarn version --patch",
-    "check:login": "npm whoami > /dev/null 2>&1",
+    "check:login": "npm whoami 2>nul || (echo 'Not logged in to npm. Please log in.' && exit 1)",
     "register:package": "npm publish"
   },
   "peerDependencies": {

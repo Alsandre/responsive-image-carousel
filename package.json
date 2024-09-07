@@ -4,8 +4,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist",
-    "prepare": "husky"
+    "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

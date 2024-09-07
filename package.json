@@ -1,13 +1,10 @@
 {
   "name": "@alsandre/responsive-image-carousel",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build:package": "rimraf dist && tsc --project tsconfig.build.json && copyfiles -u 1 \"src/**/*.css\" dist",
-    "publish": "npm version --patch && yarn build:package && npm whoami > /dev/null 2>&1 && npm publish || echo 'Please log in to npm...'",
-    "bump": "yarn version --patch && yarn check-login && echo 'logged in' || echo 'log in please'",
-    "check-login": "npm whoami > /dev/null 2>&1"
+    "publish": "yarn bump && yarn build:package && yarn check-login && npm publish || echo 'Please log in to npm...'"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

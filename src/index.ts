@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export { Carousel } from "./components/Carousel";
+export { Carousel } from "./components";
 
 export type TCarouselStyles = {
   [key: string]: string;

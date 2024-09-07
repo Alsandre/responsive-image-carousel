@@ -3,7 +3,7 @@ import { ICarousel } from "../index";
 import classes from "./styles.module.css";
 import { Chevron, ECHevronDirections } from "./icons/Chevron";
 
-function Carousel({
+const Carousel = ({
   children,
   className,
   slideAnimation,
@@ -16,7 +16,7 @@ function Carousel({
   buttonIcon = null,
   btnClassName,
   auto = true,
-}: ICarousel): JSX.Element {
+}: ICarousel): JSX.Element => {
   const [index, setIndex] = useState(0);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const imageNodes =
@@ -98,6 +98,6 @@ function Carousel({
       {imageNodes.slice(index, index + slidesPerScreen)}
     </div>
   );
-}
+};
 
 export { Carousel };

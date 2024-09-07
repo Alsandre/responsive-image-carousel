@@ -22,12 +22,14 @@ function Carousel({
   const imageNodes =
     imageList.length !== 0
       ? (imageList.map(({ imageURL }) => (
-          <img
-            className={imageClass ?? ""}
-            style={{ width: "100%", height: "100%" }}
-            src={imageURL}
-            alt=""
-          />
+          <div className={`${classes.animate} ${slideAnimation ?? ""}`}>
+            <img
+              className={imageClass ?? ""}
+              style={{ width: "100%", height: "100%" }}
+              src={imageURL}
+              alt=""
+            />
+          </div>
         )) as ReactNode[])
       : Children.map(children, (child) => (
           <div className={`${classes.animate} ${slideAnimation ?? ""}`}>

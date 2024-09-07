@@ -5,4 +5,10 @@ else
   echo "Changes detected in the 'src/' directory. Running pre-commit tasks..."
   # Replace the following with your actual command, e.g., linting or testing
   yarn version --patch
+
+  git add package.json yarn.lock
+
+  if git diff --cached --quiet --exit-code package.json; then
+    exit 0
+  fi
 fi

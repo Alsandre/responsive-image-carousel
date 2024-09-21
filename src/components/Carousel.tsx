@@ -14,15 +14,21 @@ const Carousel = ({
   style,
   controls,
   buttonIcon = null,
-  btnClassName,
+  btnLeftClass,
+  btnRightClass,
   auto = true,
+  isAnimated,
 }: ICarousel): JSX.Element => {
   const [index, setIndex] = useState(0);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
   const imageNodes =
     imageList.length !== 0
       ? (imageList.map(({ imageURL }) => (
-          <div className={`${classes.animate} ${slideAnimation ?? ""}`}>
+          <div
+            className={`${isAnimated ? classes.animate : ""} ${
+              slideAnimation ?? ""
+            }`}
+          >
             <img
               className={imageClass ?? ""}
               style={{ width: "100%", height: "100%" }}
@@ -32,7 +38,11 @@ const Carousel = ({
           </div>
         )) as ReactNode[])
       : Children.map(children, (child) => (
-          <div className={`${classes.animate} ${slideAnimation ?? ""}`}>
+          <div
+            className={`${isAnimated ? classes.animate : ""} ${
+              slideAnimation ?? ""
+            }`}
+          >
             {child}
           </div>
         )) || [];
@@ -67,6 +77,7 @@ const Carousel = ({
         : (prevIndex + 1) % _listLength
     );
 
+  console.log(children, imageList);
   if (!children && !imageList)
     throw new Error(
       "Setup is not complete. Either children or imageList are missing."
@@ -81,7 +92,7 @@ const Carousel = ({
     >
       {controls && (
         <button
-          className={`${classes["btn-left"]}${btnClassName ?? ""}`}
+          className={`${classes["btn-left"]} ${btnLeftClass ?? ""}`}
           onClick={handleLeft}
         >
           {buttonIcon ?? <Chevron variant={ECHevronDirections.LEFT} />}
@@ -89,7 +100,7 @@ const Carousel = ({
       )}
       {controls && (
         <button
-          className={`${classes["btn-right"]}${btnClassName ?? ""}`}
+          className={`${classes["btn-right"]} ${btnRightClass ?? ""}`}
           onClick={handleRight}
         >
           {buttonIcon ?? <Chevron variant={ECHevronDirections.RIGHT} />}
